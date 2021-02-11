@@ -1,0 +1,66 @@
+<div class="content">
+  <div class="contact">
+    <div class="section">Contact</div>
+    <div class="sub-section">説明会お申し込み・お問い合わせ</div>
+    <p style="margin-bottom:1em;">ぜひ1度、足を運んでみませんか。説明会は随時開催中。</p>
+    <p style="margin-bottom:30px;">その他、お問い合わせもお気軽にどうぞ。お待ちしております。</p>
+    <p style="margin-bottom:1em;">※チーズアカデミーは実際には存在しません。</p>
+    <p style="margin-bottom:70px;">間違っても問い合わせしないようお願いいたします。</p>
+  <% if flash[:error_messages] %>
+    <div class="form-error">
+    <ul>
+      <% flash[:error_messages].each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+    <div class="form">
+      <%= form_with model: @question, local: true do |f| %>
+        <p class="form-line"></p>
+        <div class="form-group">
+          <label class='label'>名前</label>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+        <!--form-->
+        <p class="form-line"></p>
+        <div class="form-group">
+          <label class='label'>カナ</label>
+          <%= f.text_field :name_kana, class: 'form-control' %>
+        </div>
+        <p class="form-line"></p>
+        <div class="form-group">
+          <label class='label'>メールアドレス</label>
+          <%= f.text_field :mail, class: 'form-control' %>
+        </div>
+        <p class="form-line"></p>
+        <div class="form-group">
+          <label class='label'><p>チーズアカデミーを</p><p>知ったきっかけ</p></label>
+          <%= f.select :channel, [["google検索", "google検索"], ["SNS", "SNS"], ["紹介", "紹介"], ["たまたま通りかかった", "たまたま通りかかった"],["その他","その他"]], include_blank: "選択して下さい" %>
+        </div>
+        <p class="form-line"></p>
+        <div class="form-group-check">
+          <label class='label-check'>志望動機</label>
+          <%= collection_check_boxes(:question, :apply, Apply.all, :id, :apply_reason) do |b| %>
+          <label class="checkbox-inline">
+            <%= b.label {b.text} %>
+            <%= b.check_box class:"form-control2" do %>
+                 <%= b.check_box + b.text %>
+    　　　     <% end %>
+          </label>
+          <% end %>
+        </div>
+        <p class="form-line"></p>
+        <div class="form-group">
+          <label class='label-detail'>詳細</label>
+          <%= f.text_area :detail, class: 'form-control textarea' %>
+        </div>
+        <p class="form-line"></p>
+        <div class="submit-btn">
+          <%= f.submit '送信', class: "btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+    <!-- CONTACT -->
+</div>

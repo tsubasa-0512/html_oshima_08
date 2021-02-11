@@ -1,0 +1,38 @@
+<div class="content">
+<div class= 'news-detail'>
+<div id="news">
+<div class="section">NEWS</div>
+<div class="sub-section">ニュース</div>
+</div>
+<div id="news-list">
+  <% @articles.each do |article| %>
+  <%= link_to article_path(id: article.id), class: 'news-topic' do %>
+      <%= image_tag article.image.to_s, class: "article-img" %>
+      <div class="text">
+        <p style="margin-bottom:24px;"><%=  l article.created_at, format: :short %></p>
+        <%= simple_format(article.article) %>
+      </div>
+  <% end %>
+  <% end %>
+</div>
+    <div class="form article">
+      <div class="form-section">記事投稿</div>
+      <%= form_with model: @article, local: true do |f| %>
+        <p class="form-line"></p>
+        <div class="form-group">
+          <label class='label-detail'>詳細</label>
+          <%= f.text_area :article, class: 'form-control textarea' %>
+        </div>
+        <p class="form-line"></p>
+        <div class="form-group">
+          <label class='label-detail'>画像</label>
+          <%= f.file_field :image, class:'form-imagearea' %>
+        </div>
+        <p class="form-line"></p>
+        <div class="submit-btn">
+          <%= f.submit '送信', class: "btn" %>
+        </div>
+      <% end %>
+    </div>
+ </div>
+</div>

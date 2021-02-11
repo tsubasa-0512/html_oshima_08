@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>チーズアカデミー</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/black/pace-theme-bounce.min.css" />
+    <!DOCTYPE html>
+<!-- 最初の設定は終わっています　必要な方は触ってください -->
+</head>
+
+  <body>
+<div id="wrap">
+  <header id="header">
+    <div class="logo">
+      <a href="/"><%= image_tag "header_logo.png" %></a>
+  </div>
+  <nav>
+    <ul class="global-nav">
+      <li><%= link_to 'ABOUT', root_path(anchor: 'about'), class: 'menu' %></li>
+      <li><%= link_to 'COURSE', root_path(anchor: 'course'), class: 'menu' %></li>
+      <li><%= link_to 'NEWS', root_path(anchor: 'news'), class: 'menu' %></li>
+      <li><%= link_to 'ACCESS', root_path(anchor: 'access'), class: 'menu' %></li>
+      <li><%= link_to 'CONTACT', new_question_path, class: 'menu' %></li>
+    </ul>
+  </nav>
+  </header>
+  <!-- /#header -->
+  <div class="main-content">
+    <%= yield %>
+  </div>
+      
+  <div id="footer">
+      <small>copyrights 2016 Cheeese Academy Tokyo All RIghts Reserved.</small>
+  </div>
+  <!-- /#footer -->
+</div>
+  </body>
+</html>
